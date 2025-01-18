@@ -1,9 +1,27 @@
-import React from 'react'
+import React from "react";
+import { Link } from "react-router-dom";
 
-const MainNavigation = () => {
+import MainHeader from "./MainHeader";
+import NavLinks from "./NavLinks";
+import "./style/MainNavigation.css";
+
+const MainNavigation = (props) => {
   return (
-    <div>MainNavigation</div>
-  )
-}
+    <MainHeader>
+      <button className="main-navigation__menu-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <h1 className="main-navigation__title">
+        <Link>YourPlaces</Link>
+      </h1>
 
-export default MainNavigation
+      <nav>
+        <NavLinks/>
+      </nav>
+    </MainHeader>
+  );
+};
+
+export default MainNavigation;
