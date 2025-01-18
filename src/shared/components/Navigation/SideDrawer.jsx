@@ -1,8 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-const SideDrawer = () => {
+import './style/SideDrawer.css';
+
+const SideDrawer = (props) => {
   return (
-    <div>SideDrawer</div>
+    <aside className='side-drawer'>{props.children}</aside>
   )
 }
 
