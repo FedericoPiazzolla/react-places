@@ -9,7 +9,7 @@ const DUMMY_PLACES = [
     title: "Empire State Building",
     description: "One of the most famous sky scrapers of the world!",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
+      "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
     address: "20 W 34th St., New York, NY 10001, Stati Uniti",
     location: {
       lat: 40.7484112,
@@ -22,7 +22,7 @@ const DUMMY_PLACES = [
     title: "Empire State Building",
     description: "One of the most famous sky scrapers of the world!",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/c/c7/Empire_State_Building_from_the_Top_of_the_Rock.jpg",
+      "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
     address: "20 W 34th St., New York, NY 10001, Stati Uniti",
     location: {
       lat: 40.7484112,
