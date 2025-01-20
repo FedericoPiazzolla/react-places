@@ -12,8 +12,8 @@ const App = () => {
 
       <main>
         <Routes>
-          <Route path="/" exact element={<Users />} />
-          <Route path="/places/new" exact element={<NewPlace />} />
+          <Route path="/" end element={<Users />} />
+          <Route path="/places/new" end element={<NewPlace />} />
         </Routes>
       </main>
     </Router>
