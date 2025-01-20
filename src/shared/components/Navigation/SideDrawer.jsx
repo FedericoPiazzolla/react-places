@@ -1,12 +1,26 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { useRef }  from "react";
+import ReactDOM from "react-dom";
+import { CSSTransition } from "react-transition-group";
 
-import './style/SideDrawer.css';
+import "./style/SideDrawer.css";
 
 const SideDrawer = (props) => {
-  const content = <aside className='side-drawer'>{props.children}</aside>;
+  const nodeRef = useRef(null);
 
-  return ReactDOM.createPortal(content, document.getElementById('drawer-hook'));
-}
+  const content = (
+    <CSSTransition
+      in={props.show}
+      timeout={200}
+      classNames="slide-in-left"
+      mountOnEnter
+      unmountOnExit
+      nodeRef={nodeRef}
+      >
+      <aside className="side-drawer" ref={nodeRef} onClick={props.onClick}>{props.children}</aside>
+    </CSSTransition>
+  );
+
+  return ReactDOM.createPortal(content, document.getElementById("drawer-hook"));
+};
 
 export default SideDrawer;

@@ -15,6 +15,7 @@ body {
 
 .slide-in-left-enter {
   transform: translateX(-100%);
+  opacity: 0;
 }
 
 .slide-in-left-enter-active {

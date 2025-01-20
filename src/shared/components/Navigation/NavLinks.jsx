@@ -7,7 +7,7 @@ const NavLinks = (props) => {
   return (
     <ul className='nav-links'>
       <li>
-        <NavLink to="/" exact>ALL USERS</NavLink>
+        <NavLink to="/" end>ALL USERS</NavLink>
       </li>
       <li>
         {/* al momento della creazione db sostituire con id veritiero */}
