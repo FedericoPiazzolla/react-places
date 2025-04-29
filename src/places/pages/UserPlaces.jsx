@@ -12,8 +12,8 @@ const DUMMY_PLACES = [
       "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
     address: "20 W 34th St., New York, NY 10001, Stati Uniti",
     location: {
+      lon: -74.0680653,
       lat: 40.7484112,
-      lng: -74.0680653,
     },
     creator: "u1",
   },
@@ -25,8 +25,8 @@ const DUMMY_PLACES = [
       "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
     address: "20 W 34th St., New York, NY 10001, Stati Uniti",
     location: {
+      lon: -74.0680653,
       lat: 40.7484112,
-      lng: -74.0680653,
     },
     creator: "u2",
   },
