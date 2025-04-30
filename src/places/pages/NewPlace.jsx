@@ -60,8 +60,13 @@ function NewPlace() {
     });
   }, []);
 
+  const placeSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs); // manderemo i dati al back end
+  };
+
   return (
-    <form action="" className="place-form">
+    <form className="place-form" onSubmit={placeSubmitHandler}>
       {/* Ogni input è collegato al reducer tramite onInput (che usa dispatch internamente) */}
       <Input
         id="title"
@@ -79,6 +84,15 @@ function NewPlace() {
         validators={[VALIDATOR_MINLENGTH(5)]}
         onInput={inputHandler}
         errorText="Please enter a valid description (at least 5 characters)."
+      />
+      <Input
+        id="address"
+        element="input"
+        type="text"
+        label="Address"
+        validators={[VALIDATOR_REQUIRE()]}
+        onInput={inputHandler}
+        errorText="Please enter a valid address."
       />
 
       {/* Il bottone è disabilitato finché il form non è valido */}
