@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 // useReducer è utile per gestire stati complessi o quando ci sono più azioni che aggiornano lo stato
 // Funziona come un 'reducer' in Redux, centralizzando la logica per aggiornare lo stato.
 // La differenza principale con useState è che useReducer è più adatto a stati complessi o a stati che dipendono da azioni multiple.
@@ -37,6 +37,11 @@ const Input = (props) => {
   //Quando l'azione CHANGE viene inviata (tramite dispatch), il reducer aggiorna il valore dell'input (value) e imposta isValid a true.
 
   // La funzione changeHandler viene chiamata ogni volta che l'utente scrive qualcosa nell'input o nel textarea. Essa invia un'azione CHANGE al reducer per aggiornare lo stato.
+  const {id, onInput} = props;
+  const {value, isValid} = inputSate;
+  useEffect(() => {
+    onInput(id, value, isValid)
+  }, [id, onInput, value, isValid]);
 
   // Il valore dell'input viene preso dall'evento change e passato alla funzione dispatch.
   const changeHandler = (event) => {
@@ -47,6 +52,7 @@ const Input = (props) => {
     });
   };
 
+  // serve per far partire la validazione solo dopo che siamo passati sopra l'input, per non farla partire all'onLoad
   const touchHandler = () => {
     dispatch({ type: "TOUCH" });
   };
