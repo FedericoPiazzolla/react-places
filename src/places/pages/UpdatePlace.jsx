@@ -9,6 +9,7 @@ import Button from "../../shared/components/FormElements/Button";
 import useForm from "../../shared/hooks/form-hook";
 
 import "./style/PlaceForm.css";
+import Card from "../../shared/components/UIElements/Card";
 
 const DUMMY_PLACES = [
   {
@@ -26,7 +27,7 @@ const DUMMY_PLACES = [
   },
   {
     id: "p2",
-    title: "Empire State Building",
+    title: "Emp. State Building",
     description: "One of the most famous sky scrapers of the world!",
     imageUrl:
       "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
@@ -60,16 +61,20 @@ const UpdatePlace = () => {
   const identifiedPlace = DUMMY_PLACES.find((p) => p.id === placeId);
 
   useEffect(() => {
-    setFormData({
-      title: {
-        value: identifiedPlace.title,
-        isValid: true,
-      },
-      description: {
-        value: identifiedPlace.description,
-        isValid: true,
-      },
-    }, true);
+
+    if(identifiedPlace) {
+      setFormData({
+        title: {
+          value: identifiedPlace.title,
+          isValid: true,
+        },
+        description: {
+          value: identifiedPlace.description,
+          isValid: true,
+        },
+      }, true);
+    }
+    
     setIsLoading(false);
   }, [setFormData, identifiedPlace]);
 
@@ -81,7 +86,9 @@ const UpdatePlace = () => {
   if (!identifiedPlace) {
     return (
       <div className="center">
-        <h2>Could not find place!</h2>
+        <Card>
+          <h2>Could not find place!</h2>  
+        </Card>
       </div>
     );
   }

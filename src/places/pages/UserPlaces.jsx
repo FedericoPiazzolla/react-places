@@ -19,7 +19,7 @@ const DUMMY_PLACES = [
   },
   {
     id: "p2",
-    title: "Empire State Building",
+    title: "Emp. State Building",
     description: "One of the most famous sky scrapers of the world!",
     imageUrl:
       "https://cdn-imgix.headout.com/media/images/e783f141025783e733cf2e6f80d745ba-593-new-york-empire-state-building-observatory-tickets-11.jpg?auto=format&q=90&fit=crop&crop=faces",
