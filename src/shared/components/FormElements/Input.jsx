@@ -30,8 +30,8 @@ const inputReducer = (state, action) => {
 const Input = (props) => {
   //utilizziamo useReducer
   const [inputSate, dispatch] = useReducer(inputReducer, {
-    value: "",
-    isValid: false,
+    value: props.value || "",
+    isValid: props.valid || false,
     isTouch: false,
   });
   //Quando l'azione CHANGE viene inviata (tramite dispatch), il reducer aggiorna il valore dell'input (value) e imposta isValid a true.

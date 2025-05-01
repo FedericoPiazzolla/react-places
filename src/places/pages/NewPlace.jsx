@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer } from "react";
+import React from "react";
 
 import Input from "../../shared/components/FormElements/Input";
 import {
@@ -6,61 +6,20 @@ import {
   VALIDATOR_REQUIRE,
 } from "../../shared/util/validators";
 
-import "./style/NewPlace.css";
+import "./style/PlaceForm.css";
 import Button from "../../shared/components/FormElements/Button";
-
-// Reducer: gestisce lo stato del form in base al tipo di azione ricevuta
-const formReducer = (state, action) => {
-  switch (action.type) {
-    case "INPUT_CHANGE":
-      let formIsValid = true;
-
-      // Cicla su tutti i campi del form per verificare se l'intero form è valido
-      for (const inputId in state.inputs) {
-        if (inputId === action.inputId) {
-          formIsValid = formIsValid && action.isValid; // nuovo valore appena ricevuto
-        } else {
-          formIsValid = formIsValid && state.inputs[inputId].isValid; // stato precedente
-        }
-      }
-
-      // Restituisce il nuovo stato con il campo aggiornato e la validità del form
-      return {
-        ...state,
-        inputs: {
-          ...state.inputs,
-          [action.inputId]: { value: action.value, isValid: action.isValid },
-        },
-        isValid: formIsValid,
-      };
-
-    default:
-      return state;
-  }
-};
+import useForm from "../../shared/hooks/form-hook";
 
 function NewPlace() {
-  // useReducer gestisce lo stato complesso del form (valori + validità)
-  const [formState, dispatch] = useReducer(formReducer, {
-    inputs: {
+  const [formState, inputHandler] = useForm(
+    {
       title: { value: "", isValid: false },
       description: { value: "", isValid: false },
+      address: { value: "", isValid: false },
     },
-    isValid: false,
-  });
-
-  // useCallback memorizza questa funzione, evitando che venga ricreata a ogni render.
-  // Questo è utile perché la funzione viene passata al componente figlio <Input>.
-  const inputHandler = useCallback((id, value, isValid) => {
-    dispatch({
-      type: "INPUT_CHANGE",
-      value: value,
-      isValid: isValid,
-      inputId: id,
-    });
-  }, []);
-
-  const placeSubmitHandler = event => {
+    false
+  );
+  const placeSubmitHandler = (event) => {
     event.preventDefault();
     console.log(formState.inputs); // manderemo i dati al back end
   };
