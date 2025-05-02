@@ -8,6 +8,9 @@ const formReducer = (state, action) => {
 
       // Cicla su tutti i campi del form per verificare se l'intero form è valido
       for (const inputId in state.inputs) {
+        if(!state.inputs[inputId]) {
+          continue;
+        }
         if (inputId === action.inputId) {
           formIsValid = formIsValid && action.isValid; // nuovo valore appena ricevuto
         } else {
