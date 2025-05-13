@@ -1,38 +1,41 @@
-import React, { useState, useCallback, useRef, useEffect } from "react";
+import { useState, useCallback, useRef, useEffect } from 'react';
 
-const useHttpClient = () => {
+export const useHttpClient = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState();
 
-  const activeHttpRequest = useRef([]);
+  const activeHttpRequests = useRef([]);
 
   const sendRequest = useCallback(
-    async (url, method = "GET", body = null, headers = {}) => {
+    async (url, method = 'GET', body = null, headers = {}) => {
       setIsLoading(true);
-      const httpAbortCtrll = new AbortController();
-      activeHttpRequest.current.push(httpAbortCtrll);
+      const httpAbortCtrl = new AbortController();
+      activeHttpRequests.current.push(httpAbortCtrl);
 
       try {
         const response = await fetch(url, {
           method,
           body,
           headers,
-          signal: httpAbortCtrll.signal,
+          signal: httpAbortCtrl.signal
         });
 
         const responseData = await response.json();
 
-        activeHttpRequest.current = activeHttpRequest.current.filter(
-          (reqCtrl) => reqCtrl !== httpAbortCtrll
+        activeHttpRequests.current = activeHttpRequests.current.filter(
+          reqCtrl => reqCtrl !== httpAbortCtrl
         );
 
         if (!response.ok) {
           throw new Error(responseData.message);
         }
+
         setIsLoading(false);
         return responseData;
       } catch (err) {
-        setError(err.message);
+        if (err.name !== 'AbortError') {
+          setError(err.message || 'Something went wrong!');
+        }
         setIsLoading(false);
         throw err;
       }
@@ -46,11 +49,10 @@ const useHttpClient = () => {
 
   useEffect(() => {
     return () => {
-      activeHttpRequest.current.forEach((abortCtrl) => abortCtrl.abort());
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      activeHttpRequests.current.forEach(abortCtrl => abortCtrl.abort());
     };
   }, []);
 
   return { isLoading, error, sendRequest, clearError };
 };
-
-export default useHttpClient;

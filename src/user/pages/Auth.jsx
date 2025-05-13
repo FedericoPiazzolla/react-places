@@ -11,7 +11,7 @@ import {
 } from "../../shared/util/validators";
 import useForm from "../../shared/hooks/form-hook";
 import Button from "../../shared/components/FormElements/Button";
-import useHttpClient from "../../shared/hooks/http-hook";
+import {useHttpClient} from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 import "../pages/style/Auth.css";
 
