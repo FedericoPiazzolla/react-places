@@ -12,6 +12,7 @@ import Button from "../../shared/components/FormElements/Button";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
 import useForm from "../../shared/hooks/form-hook";
+import ImageUpload from "../../shared/components/FormElements/ImageUpload";
 import { useHttpClient } from "../../shared/hooks/http-hook";
 import { AuthContext } from "../../shared/context/auth-context";
 
@@ -23,6 +24,8 @@ function NewPlace() {
       title: { value: "", isValid: false },
       description: { value: "", isValid: false },
       address: { value: "", isValid: false },
+      image: { value: null, isValid: false
+      }
     },
     false
   );
@@ -82,6 +85,7 @@ function NewPlace() {
           onInput={inputHandler}
           errorText="Please enter a valid address."
         />
+        <ImageUpload center id='image' onInput={inputHandler}/>
 
         {/* Il bottone è disabilitato finché il form non è valido */}
         <Button type="submit" disabled={!formState.isValid}>
