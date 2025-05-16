@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import Input from "../../shared/components/FormElements/Input";
@@ -22,7 +22,7 @@ const UpdatePlace = () => {
   const { isLoading, error, sendRequest, clearError } = useHttpClient();
   const [loadedPlace, setLoadedPlace] = useState();
   const placeId = useParams().placeId;
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const [formState, inputHandler, setFormData] = useForm(
     {
@@ -76,9 +76,10 @@ const UpdatePlace = () => {
         }),
         {
           "Content-Type": "application/json",
+          authorization: "Bearer " + auth.token,
         }
       );
-      navigate('/' + auth.userId + '/places');
+      navigate("/" + auth.userId + "/places");
     } catch (err) {}
   };
 

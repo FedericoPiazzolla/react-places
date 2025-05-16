@@ -77,9 +77,12 @@ const PlaceItem = (props) => {
 
       <li className="place-item">
         <Card className="place-item__content">
-          {isLoading && <LoadingSpinner asOverlay/>}
+          {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
-            <img src={`http://localhost:5010/${props.image}`} alt={props.title} />
+            <img
+              src={`http://localhost:5010/${props.image}`}
+              alt={props.title}
+            />
           </div>
 
           <div className="place-item__info">
@@ -95,7 +98,7 @@ const PlaceItem = (props) => {
             {auth.userId === props.creator && (
               <Button to={`/places/${props.id}`}>EDIT</Button>
             )}
-            {auth.userId === props.creator  && (
+            {auth.userId === props.creator && (
               <Button danger onClick={showDeleteWarningHandler}>
                 DELETE
               </Button>
