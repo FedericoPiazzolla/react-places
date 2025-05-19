@@ -33,7 +33,7 @@ const PlaceItem = (props) => {
     setShowConfirmModal(false);
     try {
       await sendRequest(
-        `http://localhost:5010/api/places/${props.id}`,
+        `${import.meta.env.VITE_BACKEND_URL}/places/${props.id}`,
         "DELETE",
         null,
         {
@@ -84,7 +84,7 @@ const PlaceItem = (props) => {
           {isLoading && <LoadingSpinner asOverlay />}
           <div className="place-item__image">
             <img
-              src={`http://localhost:5010/${props.image}`}
+              src={`${import.meta.env.VITE_ASSET_URL}/${props.image}`}
               alt={props.title}
             />
           </div>

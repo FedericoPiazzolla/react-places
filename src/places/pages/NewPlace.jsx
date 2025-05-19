@@ -40,9 +40,14 @@ function NewPlace() {
       formData.append("address", formState.inputs.address.value);
       formData.append("image", formState.inputs.image.value);
 
-      await sendRequest("http://localhost:5010/api/places", "POST", formData, {
-        Authorization: "Bearer " + auth.token,
-      });
+      await sendRequest(
+        import.meta.env.VITE_BACKEND_URL + "/places",
+        "POST",
+        formData,
+        {
+          Authorization: "Bearer " + auth.token,
+        }
+      );
       navigate("/");
     } catch (err) {}
   };

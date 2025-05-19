@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import UsersList from "../components/UsersList";
 import ErrorModal from "../../shared/components/UIElements/ErrorModal";
 import LoadingSpinner from "../../shared/components/UIElements/LoadingSpinner";
-import {useHttpClient} from "../../shared/hooks/http-hook";
+import { useHttpClient } from "../../shared/hooks/http-hook";
 
 const Users = () => {
   const [loadedUser, setLoadedUser] = useState();
@@ -13,7 +13,7 @@ const Users = () => {
     const fetchUsers = async () => {
       try {
         const responseData = await sendRequest(
-          "http://localhost:5010/api/users"
+          import.meta.env.VITE_BACKEND_URL + "/users"
         );
 
         setLoadedUser(responseData.users);
@@ -34,6 +34,6 @@ const Users = () => {
       {!isLoading && loadedUser && <UsersList items={loadedUser} />}
     </React.Fragment>
   );
-}
+};
 
 export default Users;

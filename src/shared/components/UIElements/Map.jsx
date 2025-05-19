@@ -1,7 +1,7 @@
-import React, { useRef, useEffect } from 'react';
-import tt from '@tomtom-international/web-sdk-maps';
-import '@tomtom-international/web-sdk-maps/dist/maps.css';
-import './style/Map.css';
+import React, { useRef, useEffect } from "react";
+import tt from "@tomtom-international/web-sdk-maps";
+import "@tomtom-international/web-sdk-maps/dist/maps.css";
+import "./style/Map.css";
 
 const Map = ({ center, zoom, className, style }) => {
   const mapRef = useRef();
@@ -10,7 +10,7 @@ const Map = ({ center, zoom, className, style }) => {
     if (!mapRef.current) return;
 
     const map = tt.map({
-      key: 'QIFgsVZMw9ywGqdJEDDpJnUkaY3TWtSQ',
+      key: import.meta.env.VITE_TOMTOM_API_KEY,
       container: mapRef.current,
       center: [center.lon, center.lat],
       zoom,
@@ -23,13 +23,7 @@ const Map = ({ center, zoom, className, style }) => {
     return () => map.remove();
   }, [center, zoom]);
 
-  return (
-    <div
-      ref={mapRef}
-      className={`map ${className}`}
-      style={style}
-    ></div>
-  );
+  return <div ref={mapRef} className={`map ${className}`} style={style}></div>;
 };
 
 export default Map;

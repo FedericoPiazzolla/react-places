@@ -42,7 +42,7 @@ const UpdatePlace = () => {
     const fetchPlaces = async () => {
       try {
         const responseData = await sendRequest(
-          `http://localhost:5010/api/places/${placeId}`
+          `${process.env.REACT_APP_TOMTOM_BACKEND_URL}/places/${placeId}`
         );
         setLoadedPlace(responseData.place);
         setFormData(
@@ -68,7 +68,7 @@ const UpdatePlace = () => {
     event.preventDefault();
     try {
       await sendRequest(
-        `http://localhost:5010/api/places/${placeId}`,
+        `${import.meta.env.VITE_BACKEND_URL}/places/${placeId}`,
         "PATCH",
         JSON.stringify({
           title: formState.inputs.title.value,
