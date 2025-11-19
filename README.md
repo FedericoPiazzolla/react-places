@@ -33,7 +33,7 @@ Questo progetto nasce per esercitarsi con React, autenticazione JWT, routing pro
 1. Clona il repository
 
 ```bash
-git clone https://github.com/FedericoPiazzolla/react-e-commerce.git
+git clone https://github.com/FedericoPiazzolla/react-places.git
 ```
 
 2. Entra nella cartella progetto
