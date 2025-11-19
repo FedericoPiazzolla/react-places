@@ -39,7 +39,7 @@ git clone https://github.com/FedericoPiazzolla/react-places.git
 2. Entra nella cartella progetto
 
 ```bash
-cd react-ecommerce
+cd react-places
 ```
 
 3. Installa le dipendenze
